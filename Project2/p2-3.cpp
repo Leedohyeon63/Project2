@@ -10,7 +10,7 @@ int main() { //엔트리 포인트(코드가 시작되는 곳)
 	int number = 0;
 	printf("나이 : ");
 	cin >> number;
-	printf("%d세", number**2);
+	printf("%d세", number**12);
 
 	return 0;
 
