@@ -12,14 +12,33 @@
 
 
 int main() { //엔트리 포인트(코드가 시작되는 곳)
-	//cout << "Hello world\n"; 
-	int number = 0;
-	printf("나이 : ");
-	cin >> number;
-	printf("%d세", number);
-	printf("%d세", number);
-	printf("%d세", number);
-	printf("%d세", number);
+	int num1 = 0, num2 = 0, swap = 0;
+	//1번 별찍기
+	printf("  *  \n *** \n*****\n");
+	//2번 미로 그리기
+	printf("□□□□□□□□\n□  □    □  □\n□     □     □\n□□□□□□□□\n");
+	//3번 숫자 바꾸기
+	printf("1번 숫자 : ");
+	cin >> num1;
+	swap = num1;
+	printf("2번 숫자 : ");
+	cin >> num2;
+	num1 = num2;
+	num2 = swap;
+	printf("1번 숫자는 %d, 2번 숫자는 %d\n", num1, num2);
+	//4번 사각형 넓이 구하기
+	printf("가로 : ");
+	cin >> num1;
+	printf("세로 : ");
+	cin >> num2;
+	printf("사각형의 넓이는 %d\n", num1*num2);
+	//5번 나머지 구하기
+	printf("제수 : ");
+	cin >> num1;
+	printf("피제수 : ");
+	cin >> num2;
+	printf("나머지는 %d", num2 - (num2/num1)*num1);
+
 
 	return 0;
 
