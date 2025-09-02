@@ -12,7 +12,7 @@
 
 
 int main() { //엔트리 포인트(코드가 시작되는 곳)
-	//cout << "Hello world\n";
+	//cout << "Hello world\n"; 
 	int number = 0;
 	printf("나이 : ");
 	cin >> number;
