@@ -10,50 +10,109 @@
 #include<cstdio>
 #include "header.h"
 
-int main() { //엔트리 포인트(코드가 시작되는 곳)
-	int a = 10;
-	int b = 0;
-	cin >> b;
-	if (b < 60)
+int main() { 
+	//1번
+	int a = 0;
+	printf("숫자 입력 : ");
+	cin >> a;
+	if (a > 0)
 	{
-		printf("f");
+		printf("양수\n");
 	}
-	else if (b < 70)
+	else if (a==0)
 	{
-		printf("d");
-	}
-	else if (b < 80)
-	{
-		printf("c");
-	}
-	else if (b < 90)
-	{
-		printf("b");
+		printf("0\n");
 	}
 	else
 	{
-		printf("a");
+		printf("음수\n");
 	}
 
+	//2번
+	printf("숫자 입력 : ");
 	cin >> a;
-	switch (a)
+	if (a%2==0)
 	{
-	case 1:
-		printf("1");
-		break;
-	case 3:
-		printf("3");
-		break;
-	case 5:
-		printf("5");
-		break;
-	default:
-		printf("x");
-		break;
+		printf("짝수\n");
+	}
+	else
+	{
+		printf("홀수\n");
 	}
 
+	//3번
+	int b = 0;
+	printf("두 수 입력 : ");
+	cin >> a;
+	cin >> b;
+	if (a-b > 0)
+	{
+		printf("a가 더 크다\n");
+	}
+	else if (a==b)
+	{
+		printf("같다\n");
+	}
+	else
+	{
+		printf("b가 더 크다\n");
+	}
 
+	//4번
+	printf("나이랑 키 입력 : ");
+	cin >> a;
+	cin >> b;
+	if (a > 5 && b >= 120)
+	{
+		printf("탑승 가능\n");
+	}
+	else
+	{
+		printf("불가능\n");
+	}
 
+	//5번
+	printf("점수 입력 : ");
+	cin >> a;
+	if (a<60)
+	{
+		printf("f\n");
+	}
+	else if (a<70)
+	{
+		printf("d\n");
+	}
+	else if (a<80)
+	{
+		printf("c\n");
+	}
+	else if (a<90)
+	{
+		printf("b\n");
+	}
+	else
+	{
+		printf("a\n");
+	}
+
+	//6번
+	int c = 0;
+	printf("세 과목 점수 입력 : ");
+	cin >> a;
+	cin >> b;
+	cin >> c;
+	if (a>=40 && b >= 40 && c>=40)
+	{
+		printf("불합격\n");
+	}
+	else if ((a+b+c)/3 >= 60)
+	{
+		printf("합격\n");
+	}
+	else
+	{
+		printf("불합격\n");
+	}
 
 	return 0;
 }
