@@ -28,10 +28,27 @@ int main() { //엔트리 포인트(코드가 시작되는 곳)
 	//cin >> n1 >> n2;
 	//printf("n1 : %f \nn2 : %.2f", n1, n2);
 
-	float PI = 3.14f, R = 0.0f;
-	cin >> R;
-	printf("넓이 : %f", 2 * PI * R);
-	
+	//float PI = 3.14f, R = 0.0f;
+	//cin >> R;
+	//printf("넓이 : %f", PI * R * R);
+
+	//int s = 0;
+	//cin >> s;
+	//printf("넓이 : %d", s*s);
+
+	float a = 123.0f;
+	float b = 0.0f;
+	cin >> b;
+
+	bool result = a==b;
+
+	//float 타입을 ==로 비교할 때 반드시 아래와 같이 진행해야 함
+	//float epsilon = 0.001f;
+	//a < (b + epsilon);
+	//b > (a + epsilon);
+
+
+
 
 	return 0;
 
