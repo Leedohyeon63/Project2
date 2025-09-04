@@ -11,111 +11,104 @@
 #include "header.h"
 
 int main() { 
+	for (int i = 0; i < 10; i++)
+	{
+		printf("helloworld%d\n",i);
+	}
+
+	int count=1;
+	while ((count%3)!=0)
+	{
+		printf("helloworld%d\n",count);
+		count++;
+	}
+
+	int count = 1;
+	do
+	{
+		printf("helloworld%d\n", count);
+
+	} while ((count % 3) != 0);
+
+
 	//1번
-	int a = 0;
-	printf("숫자 입력 : ");
-	cin >> a;
-	if (a > 0)
+	int num = 1, sum = 0;
+	while (num!=0)
 	{
-		printf("양수\n");
+		printf("숫자입력 : ");
+		cin >> num;
+		sum += num;
 	}
-	else if (a==0)
+	printf("총합 : %d\n", sum);
+
+
+	num = 0, sum = 0;
+	do
 	{
-		printf("0\n");
-	}
-	else
-	{
-		printf("음수\n");
-	}
+		printf("숫자입력 : ");
+		cin >> num;
+		sum += num;
+
+	} while (num!=0);
+
+	printf("총합 : %d\n", sum);
+
 
 	//2번
-	printf("숫자 입력 : ");
-	cin >> a;
-	if (a%2==0)
+	int num2 = 0;
+	printf("숫자입력 : ");
+	cin >> num2;
+	for (int i = 1; i < 10; i++)
 	{
-		printf("짝수\n");
+		printf("%d x %d = %d\n", num2,i,i*num2);
 	}
-	else
-	{
-		printf("홀수\n");
-	}
-
+	
 	//3번
-	int b = 0;
-	printf("두 수 입력 : ");
-	cin >> a;
-	cin >> b;
-	if (a-b > 0)
+	int num3 = 0;
+	printf("숫자입력 : ");
+	cin >> num3;
+	for (int i = 1; i <= num3; i++)
 	{
-		printf("a가 더 크다\n");
+		if ((i%2)!=0)
+		{
+			printf("%d ",i);
+		}
+		
 	}
-	else if (a==b)
-	{
-		printf("같다\n");
-	}
-	else
-	{
-		printf("b가 더 크다\n");
-	}
+	printf("\n");
+
 
 	//4번
-	printf("나이랑 키 입력 : ");
-	cin >> a;
-	cin >> b;
-	if (a > 5 && b >= 120)
+	for (int i = 1; i <= 100; i++)
 	{
-		printf("탑승 가능\n");
+		if ((i % 7) == 0)
+		{
+			printf("%d ", i);
+		}
+
 	}
-	else
-	{
-		printf("불가능\n");
-	}
+	printf("\n");
+
 
 	//5번
-	printf("점수 입력 : ");
-	cin >> a;
-	if (a<60)
+	int num5 = 0;
+	printf("숫자입력 : ");
+	cin >> num5;
+	for (int i = 0; i < num5 ; i++)
 	{
-		printf("f\n");
-	}
-	else if (a<70)
-	{
-		printf("d\n");
-	}
-	else if (a<80)
-	{
-		printf("c\n");
-	}
-	else if (a<90)
-	{
-		printf("b\n");
-	}
-	else
-	{
-		printf("a\n");
+		for (int j = num5; j > i+1 ; j--) 
+		{
+			printf(" ");
+		}
+		
+		for (int k = 0; k < 2*i+1; k++)
+		{
+			printf("*");
+		}
+		printf("\n");
 	}
 
-	//6번
-	int c = 0;
-	printf("세 과목 점수 입력 : ");
-	cin >> a;
-	cin >> b;
-	cin >> c;
-	if (a>=40 && b >= 40 && c>=40)
-	{
-		if ((a + b + c) / 3 >= 60)
-		{
-			printf("합격\n");
-		}
-		else
-		{
-			printf("불합격\n");
-		}
-	}
-	else
-	{
-		printf("불합격\n");
-	}
+
 
 	return 0;
 }
