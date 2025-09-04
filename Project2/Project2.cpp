@@ -9,7 +9,7 @@
 #include<stdio.h>
 #include<cstdio>
 #include<random>
-#include "header.h"
+using namespace std;
 
 int main() { 
 	random_device Randomdivece;
@@ -27,7 +27,7 @@ int main() {
 		}
 
 	}
-	printf("%d\n", count);
+	printf("6은 %d번 나옴\n", count);
 
 
 	//2번
@@ -58,7 +58,7 @@ int main() {
 				printf("이김\n");
 				myscore++;
 			}
-			else
+			else if (myRSP == 보)
 			{
 				printf("짐\n");
 				enemyscore++;
@@ -74,7 +74,7 @@ int main() {
 			{
 				printf("비김\n");
 			}
-			else
+			else if(myRSP == 보)
 			{
 				printf("이김\n");
 				myscore++;
@@ -91,7 +91,7 @@ int main() {
 				printf("짐\n");
 				enemyscore++;
 			}
-			else
+			else if(myRSP == 보)
 			{
 				printf("비김\n");
 			}
@@ -114,11 +114,11 @@ int main() {
 	//3번
 	uniform_int_distribution<> updownfromDis(1, 100);
 	int mynumber = 0, life=5, comnumber= updownfromDis(Generate);
-	
+	printf("숫자 하나 입력\n");
 	while (true)
 	{
 		mynumber = 0;
-		cin >> mynumber;
+		::cin >> mynumber;
 		if(mynumber==comnumber){
 			printf("정답\n");
 			break;
@@ -135,31 +135,157 @@ int main() {
 		}
 		if (life==0)
 		{
-			printf("게임오버");
+			printf("게임오버\n");
 			break;
 
 		}
 	}
 
 	//4번
-	enum 아이템
+
+	int choise = 0;
+	int swordtoggle =0;
+	int bandegetoggle = 0;
+	int lighttoggle = 0;
+	int charmtoggle = 0;
+
+	while (choise!=5)
 	{
-		칼,
-		붕대,
-		손전등,
-		빠루,
-		부적
-	};
-	printf("------------------");
-	printf("%");
+
+		enum 아이템
+		{
+			칼 = 0b0001,
+			붕대 = 0b0010,
+			손전등 = 0b0100,
+			부적 = 0b1000
+		};
+		printf("현재 아이템 목록\n");
+		printf("------------------\n");
+		if (swordtoggle)
+		{
+			printf("칼\n");
+		}
+		if (bandegetoggle)
+		{
+			printf("붕대\n");
+		}
+		if (lighttoggle)
+		{
+			printf("손전등\n");
+		}
+		if (charmtoggle) {
+			printf("부적\n");
+		}
+		printf("------------------\n");
+		printf("1. 칼 추가/삭제\n");
+		printf("2. 붕대 추가/삭제\n");
+		printf("3. 손전등 추가/삭제\n");
+		printf("4. 부적 추가/삭제\n");
+		printf("5. 종료\n");
+
+		::cin >> choise;
+
+		switch (choise)
+		{
+		case 1:
+			swordtoggle ^= 칼;
+			break;
+
+		case 2:
+			bandegetoggle ^= 붕대;
+			break;
+		case 3:
+			lighttoggle ^= 손전등;
+			break;
+		case 4:
+			charmtoggle ^= 부적;
+			break;
+		case 5:
+			break;
+		default:
+			break;
+		}
 
 
+	}
 
 
-	printf("------------------");
+	//5번
+	uniform_int_distribution<> gamblefromDis(1, 6);
+	uniform_int_distribution<> combatfromDis(1000, 3999);
+	int playerMoney = 10000, comMoney = 10000, myDICE = 0, comDICE = 0;
+	int Bat = 0, myTotal = 0, comTotal = 0, next=0;
+	int lastMywin = 1, lastComWin = 0;
+	printf("게임 시작\n");
 
-
-
+	while (true)
+	{
+		myTotal = 0;
+		comTotal = 0;
+		Bat = 0;
+		printf("1차 주사위 굴리기\n");
+		myDICE = gamblefromDis(Generate);
+		comDICE = gamblefromDis(Generate);
+		myTotal += myDICE;
+		comTotal += comDICE;
+		printf("플레이어 : %d, 컴퓨터 : %d\n", myDICE, comDICE);
+		printf("배팅을 시작합니다\n");
+		if (lastMywin==1)
+		{
+			printf("얼마를 배팅하시나요 : ");
+			::cin >> Bat;
+			if (playerMoney < Bat) {
+				printf("배팅 금액이 부족합니다.\n");
+				continue;
+			}
+			else
+			{
+				playerMoney -= Bat;
+				comMoney -= Bat;
+				printf("배팅 완료\n");
+			}
+		}
+		else
+		{
+			Bat = (combatfromDis(Generate) / 1000) * 1000;
+			printf("컴퓨터가 배팅합니다. 배팅금액 %d원,\n", Bat);
+			playerMoney -= Bat;
+			comMoney -= Bat;
+			printf("배팅 완료\n.\n.\n.\n");
+		}
+		printf("2차 주사위 굴리기\n");
+		myDICE = gamblefromDis(Generate);
+		comDICE = gamblefromDis(Generate);
+		myTotal += myDICE;
+		comTotal += comDICE;
+		printf("플레이어 : %d, 컴퓨터 : %d\n.\n.\n", myDICE, comDICE);
+		printf("플레이어 총합 %d, 컴퓨터 총합 %d", myTotal, comTotal);
+		if (myTotal > comTotal)
+		{
+			printf("플레이어 승리\n.\n.\n");
+			playerMoney += 2*Bat;
+			lastMywin = 0;
+		}
+		else
+		{
+			printf("컴퓨터 승리\n.\n.\n");
+			comMoney += 2 * Bat;
+			lastMywin = 1;
+		}
+		if (playerMoney<=0)
+		{
+			printf("컴퓨터 승리");
+			break;
+		}
+		else if (comMoney<=0)
+		{
+			printf("플레이어 승리");
+			break;
+		}
+		printf("현재 잔액 플레이어 %d원, 컴퓨터 %d원, 다음 게임 시작하시려면 아무 입력이나...\n.\n.\n", playerMoney , comMoney);
+		::cin >> next;
+	
+	}
 
 
 
