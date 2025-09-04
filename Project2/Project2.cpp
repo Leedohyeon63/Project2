@@ -8,105 +8,144 @@
 #include <iostream>
 #include<stdio.h>
 #include<cstdio>
+#include<random>
 #include "header.h"
 
 int main() { 
-	for (int i = 0; i < 10; i++)
-	{
-		printf("helloworld%d\n",i);
-	}
-
-	int count=1;
-	while ((count%3)!=0)
-	{
-		printf("helloworld%d\n",count);
-		count++;
-	}
-
-	int count = 1;
-	do
-	{
-		printf("helloworld%d\n", count);
-
-	} while ((count % 3) != 0);
-
-
+	random_device Randomdivece;
+	mt19937 Generate(Randomdivece());
 	//1번
-	int num = 1, sum = 0;
-	while (num!=0)
+	
+	uniform_int_distribution<> unifromDis(1, 6);
+	int count = 0;
+	for (int i = 0; i < 1000000; i++)
 	{
-		printf("숫자입력 : ");
-		cin >> num;
-		sum += num;
+		int	num = unifromDis(Generate);
+		if (num == 6)
+		{
+			count++;
+		}
+
 	}
-	printf("총합 : %d\n", sum);
-
-
-	num = 0, sum = 0;
-	do
-	{
-		printf("숫자입력 : ");
-		cin >> num;
-		sum += num;
-
-	} while (num!=0);
-
-	printf("총합 : %d\n", sum);
+	printf("%d\n", count);
 
 
 	//2번
-	int num2 = 0;
-	printf("숫자입력 : ");
-	cin >> num2;
-	for (int i = 1; i < 10; i++)
-	{
-		printf("%d x %d = %d\n", num2,i,i*num2);
-	}
-	
-	//3번
-	int num3 = 0;
-	printf("숫자입력 : ");
-	cin >> num3;
-	for (int i = 1; i <= num3; i++)
-	{
-		if ((i%2)!=0)
+	uniform_int_distribution<> rspfromDis(1, 3);
+	int enemyscore = 0, myscore = 0, myRSP = 0; 
+	enum RSP
 		{
-			printf("%d ",i);
-		}
-		
-	}
-	printf("\n");
+			가위 = 1,
+			바위 = 2,
+			보 = 3,
+		};
 
+	while (true)
+	{
+		int enemyRSP = rspfromDis(Generate);
+		printf("1.가위 2.바위 3.보\n");
+		cin >> myRSP;
+		switch (enemyRSP)
+		{
+		case 가위:
+			if (myRSP==가위)
+			{
+				printf("비김\n");
+				
+			}
+			else if (myRSP == 바위)
+			{
+				printf("이김\n");
+				myscore++;
+			}
+			else
+			{
+				printf("짐\n");
+				enemyscore++;
+			}
+			break;
+		case 바위:
+			if (myRSP == 가위)
+			{
+				printf("짐\n");
+				enemyscore++;
+			}
+			else if (myRSP == 바위)
+			{
+				printf("비김\n");
+			}
+			else
+			{
+				printf("이김\n");
+				myscore++;
+			}
+			break;
+		case 보:
+			if (myRSP == 가위)
+			{
+				printf("이김\n");
+				myscore++;
+			}
+			else if (myRSP == 바위)
+			{
+				printf("짐\n");
+				enemyscore++;
+			}
+			else
+			{
+				printf("비김\n");
+			}
+			break;
+		default:
+			break;
+		}
+		if (myscore==3)
+		{
+			printf("승부에서 이김\n");
+			break;
+		}
+		else if (enemyscore==3)
+		{
+			printf("승부에서 짐\n");
+			break;
+		}
+	}
+
+	//3번
+	uniform_int_distribution<> updownfromDis(1, 100);
+	int mynumber = 0, life=5, comnumber= updownfromDis(Generate);
+	
+	while (true)
+	{
+		mynumber = 0;
+		cin >> mynumber;
+		if(mynumber==comnumber){
+			printf("정답\n");
+			break;
+		}
+		else if (mynumber > comnumber)
+		{
+			printf("다운\n");
+			life--;
+		}
+		else if (mynumber < comnumber)
+		{
+			printf("업\n");
+			life--;
+		}
+		if (life==0)
+		{
+			printf("게임오버");
+			break;
+
+		}
+	}
 
 	//4번
-	for (int i = 1; i <= 100; i++)
-	{
-		if ((i % 7) == 0)
-		{
-			printf("%d ", i);
-		}
-
-	}
-	printf("\n");
 
 
-	//5번
-	int num5 = 0;
-	printf("숫자입력 : ");
-	cin >> num5;
-	for (int i = 0; i < num5 ; i++)
-	{
-		for (int j = num5; j > i+1 ; j--) 
-		{
-			printf(" ");
-		}
-		
-		for (int k = 0; k < 2*i+1; k++)
-		{
-			printf("*");
-		}
-		printf("\n");
-	}
+
+
 
 
 
