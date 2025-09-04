@@ -103,11 +103,14 @@ int main() {
 	cin >> c;
 	if (a>=40 && b >= 40 && c>=40)
 	{
-		printf("불합격\n");
-	}
-	else if ((a+b+c)/3 >= 60)
-	{
-		printf("합격\n");
+		if ((a + b + c) / 3 >= 60)
+		{
+			printf("합격\n");
+		}
+		else
+		{
+			printf("불합격\n");
+		}
 	}
 	else
 	{
