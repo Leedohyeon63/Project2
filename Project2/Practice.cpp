@@ -3,29 +3,31 @@
 
 int Randreturn(int Rnum1, int Rnum2)
 {
-	random_device Randomdivece;
-	mt19937 Generate(Randomdivece());
-	uniform_int_distribution<> RandfromDis(Rnum1, Rnum2);
-	int Randomnum = RandfromDis(Generate);
-	return Randomnum;
+	int R = rand() % Rnum2;
+	if (R < Rnum1)
+	{
+		Randreturn(Rnum1, Rnum2);
+	}
+	else
+	{
+		return R;
+	}
 }
 
 void ageret(int Age)
 {
-	printf("당신의 나이는 ? : ");
-	cin >> Age;
 	printf("\n당신의 나이는 %d살 입니다.", Age);
 }
 
 float Round(float Round)
 {
 	float PI = 3.14f;
-	return Round*Round*PI;
+	return Round * Round * PI;
 }
 
 bool Holzzak(int Num)
 {
-	if (Num%2==0)
+	if (Num % 2 == 0)
 	{
 		return false;
 	}
@@ -69,19 +71,19 @@ int Grade(int Grade)
 	return 0;
 }
 
-void invenPuls(int Inventory, int Bflag)
+int invenPuls(int inventory, int Bflag)
 {
-
+	return inventory | Bflag;
 }
 
-void invenRemove()
+int invenRemove(int inventory, int Bflag)
 {
-
+	return inventory & ~Bflag;
 }
 
-void invenToggle()
+int invenSwitch(int inventory, int Bflag)
 {
-
+	return inventory ^ Bflag;
 }
 
 void Primide(int p)
@@ -89,7 +91,7 @@ void Primide(int p)
 	int P = p;
 	for (int i = 0; i < P; i++)
 	{
-		for (int j = P-1; j > i; j--)
+		for (int j = P - 1; j > i; j--)
 		{
 			printf(" ");
 		}

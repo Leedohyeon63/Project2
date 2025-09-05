@@ -1,2 +1,8 @@
-﻿  Project2.cpp
+﻿  Practice.cpp
+  Project2.cpp
+C:\Users\KGA\source\repos\Project4\Project2\Project2.cpp(49,40): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\KGA\source\repos\Project4\Project2\Project2.cpp(54,42): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\KGA\source\repos\Project4\Project2\Project2.cpp(59,42): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
+C:\Users\KGA\source\repos\Project4\Project2\Practice.cpp(15,1): warning C4715: 'Randreturn': 모든 제어 경로에서 값을 반환하지는 않습니다.
   Project2.vcxproj -> C:\Users\KGA\source\repos\Project4\x64\Debug\Project2.exe

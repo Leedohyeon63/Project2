@@ -4,9 +4,9 @@ void ageret(int Age);
 float Round(float Round);
 bool Holzzak(int Num);
 int Grade(int Grade);
-void invenPuls(int Inventory, int Bflag);
-void invenRemove();
-void invenToggle();
+int invenPuls(int inventory, int Bflag);
+int invenRemove(int inventory, int Bflag);
+int invenSwitch(int Inventory, int Bflag);
 void Primide(int p);
 template <typename T>
 T Min(T num1, T num2) {
