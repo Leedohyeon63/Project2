@@ -7,9 +7,7 @@ int main() {
 	//printf("%f ", sub(5.2, 2.4));
 	//printf("%d ", mul(1124, 2));
 	//printf("%f ", div(1.55, 2.55));
-	printf("%d", Randreturn(4, 100));
-
-
+	printf("%d", facto(5));
 
 }
 

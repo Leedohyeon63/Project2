@@ -19,7 +19,7 @@ void ageret(int Age)
 
 float Round(float Round)
 {
-	int PI = 3.14f;
+	float PI = 3.14f;
 	return Round*Round*PI;
 }
 
@@ -45,6 +45,7 @@ int Grade(int Grade)
 		D = 60,
 		F = 50
 	};
+
 	if (Grade > A)
 	{
 		return A;
@@ -83,7 +84,21 @@ void invenToggle()
 
 }
 
-void Primide()
+void Primide(int p)
 {
+	int P = p;
+	for (int i = 0; i < P; i++)
+	{
+		for (int j = P-1; j > i; j--)
+		{
+			printf(" ");
+		}
+
+		for (int k = 0; k < 2 * i + 1; k++)
+		{
+			printf("*");
+		}
+		printf("\n");
+	}
 
 }
