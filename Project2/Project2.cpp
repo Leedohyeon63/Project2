@@ -5,19 +5,27 @@
 // alt + 화살표 = 라인 바꾸기
 // alt + shift + 화살표 = 블럭 잡기
 //ctrl + B + R = 프로젝트 리빌드
-#include <iostream>
-#include<time.h>
-#include<stdio.h>
-#include<cstdio>
-#include<random>
+#include "header.h"
 #include "Testmath.h"
-using namespace std;
 
 int main() {
-	printf("%d", sum(1, 4));
-	printf("%d", multiPly(2, 4));
-	printf("%d", multiPly(5));
+	/*템플릿 함수
+	데이터 타입에 관계 업싱 동일한 로직을 여러 자료형에 대해 사용할 수 있게 해주는 C++의 기능
+	컴파일 타임에 실제 사용하는 곳이 있으면 해당 타입으로 코드를 생성한다
+	->헤더에 선언과 구현이 둘다 필요하다.
 
+	인라인 함수
+	함수 호출문을 해당 함수의 실제 코드로 대체하는 함수
+
+	스코프
+	변수, 함수, 객체 등이 유효하게 사용될 수 있는 범위
+	일반적으로 선언된 중괄호 안쪽에서만 유효
+	지역변수 : 특정 함수 내의 스코프 내에서만 사용할 수 있는 변수
+	전역변수 : 프로그램 전체에서 사용할 수 있는 함수
+
+	*/
+	float num2 = add(3, 6);
+	printf("%f", num2);
 	return 0;
 }
 
