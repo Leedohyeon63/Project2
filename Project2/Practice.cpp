@@ -104,3 +104,138 @@ void Primide(int p)//7번문제 피라미드 출력하는 함수
 	}
 
 }
+
+float Avg(float a, float b, float c)
+{
+	return (a+b+c)/3;
+}
+
+float Sale(float Price, float salescale)
+{
+	return Price*((100-salescale)/100);
+}
+
+
+int Dice() {
+	int R = rand() % 6 + 1;
+	return R;
+}
+
+
+void SliceNum() {
+	int N = 0, slice = 10, slicecount = 1, sum = 0;
+	cin >> N;
+	while (true)
+	{
+		if (N > slice)
+		{
+			slice *= 10;
+			slicecount++;
+		}
+		else
+		{
+			for (int i = 0; i < slicecount; i++)
+			{
+				slice /= 10;
+				sum += N / slice;
+				printf("%d ,", N / slice);
+				N = N % slice;
+			}
+			printf("자리의 합 : %d", sum);
+			break;
+		}
+	}
+}
+
+void Binary(){
+}
+
+void SlotMeachin() {
+	int seedMoney = 10000, MinBat = 100, MyBat = 0;
+
+	printf("게임을 시작합니다.\n");
+	while (true)
+	{
+		printf("현재 잔액 %d. . .\n", seedMoney);
+		printf("베팅할 금액을 말해주세요 : ");
+		cin >> MyBat;
+		if (MyBat < MinBat || MyBat > seedMoney)
+		{
+			printf("\n잘못된 금액입니다. . .\n");
+			continue;
+		}
+		else
+		{
+			seedMoney -= MyBat;
+			int slot1 = rand() % 10 + 1;
+			int slot2 = rand() % 10 + 1;
+			int slot3 = rand() % 10 + 1;
+			if (slot1 == 7 && slot2 ==7 && slot3 ==7)
+			{
+				printf("\n*777*\n");
+				seedMoney += MyBat * 10000;
+				continue;
+			}
+			else if (slot1==slot2==slot3)
+			{
+				printf("\n*잭팟*\n");
+				seedMoney += MyBat * 50;
+				continue;
+			}
+			else
+			{
+				printf("\n꽝\n");
+				if (seedMoney <= 0)
+				{
+					printf("파산. . .");
+					break;
+				}
+				continue;
+			}
+		}
+	}
+}
+void FightClub() {
+	int baseHP = 100, enemyHP = 100, Act = 0;
+
+	while (true)
+	{
+		int Crit = rand() % 10 + 1;
+		int myDamge = rand() % 10 + 5;
+		int enemyDamge = rand() % 10 + 5;
+		printf("1. 공격 : ");
+		cin >> Act;
+		if (Crit == 3)
+		{
+			printf("\n크리티컬 데미지를 입혔다. . .\n");
+			enemyHP -= 2 * myDamge;
+		}
+		else
+		{
+			printf("\n적에게 %d의 피해를 입혔다. . .\n", myDamge);
+			enemyHP -=  myDamge;
+		}
+		printf("\n적이 공격했다. . .\n");
+		if (Crit==7)
+		{
+			printf("크리티컬 데미지를 입었다. . .\n");
+			baseHP -= 2 * enemyDamge;
+		}
+		else
+		{
+			printf("\n적에게 %d의 피해를 입었다. . .\n", enemyDamge);
+			baseHP -= enemyDamge;
+		}
+		printf("\n내 체력 : %d, 적 체력 : %d\n", baseHP, enemyHP);
+		if (baseHP <= 0)
+		{
+			printf("패배했다. . .");
+			break;
+		}
+		else if (enemyHP <= 0)
+		{
+			printf("승리했다. . .");
+			break;
+		}
+	}
+}

@@ -53,3 +53,11 @@ T facto(T num1) {
 	}
 	return num1 * facto(num1 - 1);
 }
+float Avg(float a, float b, float c);
+float Sale(float Price, float salescale);
+int Dice();
+void SliceNum();
+void Binary();
+void SlotMeachin();
+void FightClub();
+
