@@ -14,8 +14,7 @@ using namespace std;
 int main() { 
 	random_device Randomdivece;
 	mt19937 Generate(Randomdivece());
-	//1번
-	
+	//1번 
 	uniform_int_distribution<> unifromDis(1, 6);
 	int count = 0;
 	for (int i = 0; i < 1000000; i++)
@@ -44,7 +43,7 @@ int main() {
 	{
 		int enemyRSP = rspfromDis(Generate);
 		printf("1.가위 2.바위 3.보\n");
-		cin >> myRSP;
+		::cin >> myRSP;
 		switch (enemyRSP)
 		{
 		case 가위:
@@ -99,12 +98,12 @@ int main() {
 		default:
 			break;
 		}
-		if (myscore==3)
+		if (myscore>=3)
 		{
 			printf("승부에서 이김\n");
 			break;
 		}
-		else if (enemyscore==3)
+		else if (enemyscore>=3)
 		{
 			printf("승부에서 짐\n");
 			break;
@@ -133,7 +132,7 @@ int main() {
 			printf("업\n");
 			life--;
 		}
-		if (life==0)
+		if (life<=0)
 		{
 			printf("게임오버\n");
 			break;
@@ -144,10 +143,7 @@ int main() {
 	//4번
 
 	int choise = 0;
-	int swordtoggle =0;
-	int bandegetoggle = 0;
-	int lighttoggle = 0;
-	int charmtoggle = 0;
+	int ItemToggle = 0;
 
 	while (choise!=5)
 	{
@@ -161,19 +157,20 @@ int main() {
 		};
 		printf("현재 아이템 목록\n");
 		printf("------------------\n");
-		if (swordtoggle)
+		if ((ItemToggle & 칼) != 0)
 		{
 			printf("칼\n");
 		}
-		if (bandegetoggle)
+		if ((ItemToggle & 붕대) != 0)
 		{
 			printf("붕대\n");
 		}
-		if (lighttoggle)
+		if ((ItemToggle & 손전등) != 0)
 		{
 			printf("손전등\n");
 		}
-		if (charmtoggle) {
+		if ((ItemToggle & 부적) != 0)
+		{
 			printf("부적\n");
 		}
 		printf("------------------\n");
@@ -188,17 +185,17 @@ int main() {
 		switch (choise)
 		{
 		case 1:
-			swordtoggle ^= 칼;
+			ItemToggle ^= 칼;
 			break;
 
 		case 2:
-			bandegetoggle ^= 붕대;
+			ItemToggle ^= 붕대;
 			break;
 		case 3:
-			lighttoggle ^= 손전등;
+			ItemToggle ^= 손전등;
 			break;
 		case 4:
-			charmtoggle ^= 부적;
+			ItemToggle ^= 부적;
 			break;
 		case 5:
 			break;
@@ -212,7 +209,7 @@ int main() {
 
 	//5번
 	uniform_int_distribution<> gamblefromDis(1, 6);
-	uniform_int_distribution<> combatfromDis(1000, 3999);
+	uniform_int_distribution<> combatfromDis(1, 3);
 	int playerMoney = 10000, comMoney = 10000, myDICE = 0, comDICE = 0;
 	int Bat = 0, myTotal = 0, comTotal = 0, next=0;
 	int lastMywin = 1, lastComWin = 0;
@@ -227,6 +224,7 @@ int main() {
 		myDICE = gamblefromDis(Generate);
 		comDICE = gamblefromDis(Generate);
 		myTotal += myDICE;
+
 		comTotal += comDICE;
 		printf("플레이어 : %d, 컴퓨터 : %d\n", myDICE, comDICE);
 		printf("배팅을 시작합니다\n");
@@ -247,7 +245,7 @@ int main() {
 		}
 		else
 		{
-			Bat = (combatfromDis(Generate) / 1000) * 1000;
+			Bat = combatfromDis(Generate) * 1000;
 			printf("컴퓨터가 배팅합니다. 배팅금액 %d원,\n", Bat);
 			playerMoney -= Bat;
 			comMoney -= Bat;
@@ -266,12 +264,18 @@ int main() {
 			playerMoney += 2*Bat;
 			lastMywin = 0;
 		}
-		else
+		else if(myTotal < comTotal)
 		{
 			printf("컴퓨터 승리\n.\n.\n");
 			comMoney += 2 * Bat;
 			lastMywin = 1;
 		}
+		else
+		{
+			printf("무승부\n.\n.\n");
+			lastMywin = 1;
+		}
+
 		if (playerMoney<=0)
 		{
 			printf("컴퓨터 승리");
@@ -286,8 +290,56 @@ int main() {
 		::cin >> next;
 	
 	}
+	
 
-
+	//홀짝
+	uniform_int_distribution<> bakarafromDis(1, 2);
+	int baseMoney = 100, winrate = 0, bakaraBat = 0, mybakarachoise = 0, Batweight=1;
+	
+	printf("홀짝 시작\n");
+	while (true)
+	{
+		int bakara = bakarafromDis(Generate);
+		printf("현재 재산 %d원. . .\n\n", baseMoney);
+		printf("홀? 짝? : 1. 홀, 2.짝\n");
+		::cin >> mybakarachoise;
+		bakaraBat = Batweight * 100;
+		if (mybakarachoise==bakara)
+		{
+			printf("플레이어 승리\n");
+			winrate++;
+			printf("현재 %d연승중. . .\n", winrate);
+			printf("(1) 이긴 금액을 모두 다시 한 번에 배팅(연승 도전)\n");
+			printf("(2) 이긴 금액을 얻고, 다시 100원부터 새로 배팅 시작\n");
+			printf("선택하세요. . .\n");
+			::cin >> mybakarachoise;
+			if (mybakarachoise==1)
+			{
+				Batweight *= 2;
+				printf("현재 베팅금액 %d원. . .\n\n", Batweight*100);
+				continue;
+			}
+			else if(mybakarachoise==2)
+			{
+				baseMoney += 2 * bakaraBat;
+				Batweight = 1;
+				winrate = 0;
+				continue;
+			}
+		}
+		else
+		{
+			printf("플레이어 패배\n");
+			baseMoney -= bakaraBat;
+			Batweight = 1;
+			winrate = 0;
+			if (baseMoney <= 100)
+			{
+				printf("게임 오버. . .\n");
+				break;
+			}
+		}
+	}
 
 	return 0;
 }
